@@ -1,14 +1,18 @@
-const http = require('http');
-
-const hostname = '127.0.0.1';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+ 
+const app = express();
+app.use(cors())
+app.use(express.json());
+app.use(function (rew, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   next()
+})
+ 
+app.get('/', (req, res) => {
+   return res.send("ergerw")
+})
+ 
+app.listen(process.env.PORT || 5000), () => console.log(`listening on port ${PORT}!`);
