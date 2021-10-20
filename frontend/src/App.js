@@ -12,13 +12,7 @@ function App() {
 
     return (
         <div>
-            <p className="text-red-200">HELLO</p>
-            <p className=""> {!data ? "Loading..." : data} </p>
-            <ItemCard className="position:absolute width: 270px"></ItemCard>
-            <ItemCard ></ItemCard>
-            <ItemCard ></ItemCard>
-            <ItemCard ></ItemCard>
-            <ItemCard ></ItemCard>
+            
         </div>
     );
 }
