@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
  
 const app = express();
+
 app.use(cors())
 app.use(express.json());
 app.use(function (rew, res, next) {
@@ -12,7 +13,7 @@ app.use(function (rew, res, next) {
 })
  
 app.get('/', (req, res) => {
-   return res.send("ergerw")
+   return res.send("This is a new thing")
 })
- 
+
 app.listen(process.env.PORT || 5000), () => console.log(`listening on port ${PORT}!`);
