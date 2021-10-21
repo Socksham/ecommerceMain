@@ -1,19 +1,14 @@
-import React from 'react';
-import ItemCard from './components/ItemCard';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
 
 function App() {
-    const [data, setData] = React.useState(null);
-
-    React.useEffect(() => {
-      fetch("/api")
-        .then((res) => res.json())
-        .then((data) => setData(data.message));
-    }, []);
-
     return (
-        <div>
-            
-        </div>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={Home} />
+            </Switch>
+        </BrowserRouter>
     );
 }
 
