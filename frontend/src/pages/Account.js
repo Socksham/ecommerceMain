@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from "../components/Navbar"
 
-function Home({history}) {
+const Account = ({history}) => {
     return (
         <div>
             <Navbar history={history}/>
@@ -9,4 +9,4 @@ function Home({history}) {
     )
 }
 
-export default Home
+export default Account
