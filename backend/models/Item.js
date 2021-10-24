@@ -3,29 +3,30 @@ const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
     title: {
-        type: String,
+        type:     String,
         required: true
     },
     description: {
-        type: String,
+        type:     String,
         required: true
     },
     price: {
-        type: Number,
+        type:     Number,
         required: true
     },
     rating: {
-        type: Number,
+        type:     Number,
         required: true
     },
     image: {
-        data: Buffer,
+        data:        Buffer,
         contentType: String,
     },
     date_added: {
-        type: Date,
+        type:    Date,
         default: Date.now
     },
 });
 
-module.exports = Item = mongoose.model('item',ItemSchema);
+const Item = mongoose.model('item',ItemSchema);
+module.exports = Item;

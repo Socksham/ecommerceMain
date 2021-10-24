@@ -18,22 +18,25 @@ const UserSchema = new Schema({
         minlength: [6, 'Minimum password length must be 6 characters']
     },
     items: [{
-        productId: {
-            type: String,
-        },
+        productId: String,
         name: String,
         quantity: {
             type: Number,
             required: true,
             min: [1, 'Quantity can not be less then 1.'],
-            deafult: 1
+            default: 1
         },
         price: Number
     }],
+    image: {
+        data:        Buffer,
+        contentType: String
+    },
     register_date: {
         type: Date,
         default: Date.now
     }
 })
 
-module.exports = User = mongoose.model('user',UserSchema);
+const User = mongoose.model('User',UserSchema);
+module.exports = User;
