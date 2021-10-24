@@ -27,4 +27,27 @@ router.route('/:id').get((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
+
+router.route('/:id').delete((req, res) => {
+    Item.findByIdAndDelete(req.params.id)
+      .then(item => res.json(item))
+      .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/update/:id').post((req, res) => {
+    Item.findById(req.params.id)
+      .then(item => {
+        item.title = req.body.title;
+        item.description = req.body.description;
+        item.price = Number(req.body.price);
+        item.rating = Number(req.body.rating);
+        item.image = Buffer(req.body.image);
+      
+        item.save()
+          .then(() => res.json('Item updated!'))
+          .catch(err => res.status(400).json('Error: ' + err));
+      })
+      .catch(err => res.status(400).json('Error: ' + err));
+});
+
 module.exports = router;
