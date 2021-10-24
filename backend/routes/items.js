@@ -8,7 +8,7 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-  const title = req.body.title;
+  const title = req.body.title.toLowerCase();
   const description = req.body.description;
   const price = Number(req.body.price);
   const rating = Number(req.body.rating);
@@ -37,7 +37,7 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
     Item.findById(req.params.id)
       .then(item => {
-        item.title = req.body.title;
+        item.title = req.body.title.toLowerCase();
         item.description = req.body.description;
         item.price = Number(req.body.price);
         item.rating = Number(req.body.rating);
@@ -48,6 +48,13 @@ router.route('/update/:id').post((req, res) => {
           .catch(err => res.status(400).json('Error: ' + err));
       })
       .catch(err => res.status(400).json('Error: ' + err));
+});
+
+router.route('/search/:word').get((req, res) => {
+    var word = req.params.word.toLowerCase();
+    Item.find({title : {$regex: word}})
+        .then(items => res.json(items))
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
 module.exports = router;
