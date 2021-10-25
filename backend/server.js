@@ -26,7 +26,11 @@ connection.once('open', () => {
 
 // Sends a test GET request to return "Test"
 app.get('/', (req, res) => {
+<<<<<<< HEAD
   return res.send("Test")
+=======
+   return res.send("Test")
+>>>>>>> frontend
 })
 
 const itemsRouter = require('./routes/items');
