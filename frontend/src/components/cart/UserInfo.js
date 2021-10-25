@@ -1,5 +1,6 @@
 import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BitcoinButton } from '../BitcoinButton';
 
 const UserInfo = () => {
     return (
@@ -52,6 +53,9 @@ const UserInfo = () => {
                 <div className="flex justify-between w-full">
                     <p>Payment method</p>
                     <ExpandMoreIcon size="large"/>
+                </div>
+                <div className="flex space-x-4 mt-4">
+                    <BitcoinButton price={10}/>
                 </div>
             </div>
         </div>
