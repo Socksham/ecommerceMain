@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Account from './pages/Account';
 import Cart from './pages/Cart';
 import AboutUs from './pages/AboutUs';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
     return (
@@ -13,6 +15,8 @@ function App() {
                 <Route exact path="/account" component={Account} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/aboutus" component={AboutUs} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
             </Switch>
         </BrowserRouter>
     );
