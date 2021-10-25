@@ -13,7 +13,7 @@ app.use(function (rew, res, next) {
 })
  
 app.get('/', (req, res) => {
-   return res.send("This is a new thing")
+   return res.send("Test")
 })
 
 app.listen(process.env.PORT || 5000), () => console.log(`listening on port ${PORT}!`);
