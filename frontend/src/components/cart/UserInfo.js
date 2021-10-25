@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { BitcoinButton } from '../BitcoinButton';
 
 const UserInfo = () => {
+    const [clicked, setClicked] = useState(true)
     return (
         <div>
             <div className="">
@@ -49,15 +50,24 @@ const UserInfo = () => {
                     <p className="m-auto text-white">Save and Deliver</p>
                 </div>
             </div>
-            <div className="w-full mt-8 bg-white h-12 rounded-md flex items-center pl-4 cursor-pointer pr-4">
-                <div className="flex justify-between w-full">
-                    <p>Payment method</p>
-                    <ExpandMoreIcon size="large"/>
-                </div>
-                <div className="flex space-x-4 mt-4">
-                    <BitcoinButton price={10}/>
-                </div>
-            </div>
+            {
+                clicked ?
+                    <div className="w-full mt-8 bg-white p-2 rounded-md flex items-center pl-4 cursor-pointer pr-4" onClick={() => {setClicked(false)}}>
+                        <div className="w-full">
+                            <p>Payment method</p>
+                            <BitcoinButton />
+                        </div>
+                    </div>
+                    :
+                    <div className="w-full mt-8 bg-white h-12 rounded-md flex items-center pl-4 cursor-pointer pr-4" onClick={() => {setClicked(true)}}>
+                        <div className="flex justify-between w-full">
+                            <p>Payment method</p>
+                            <ExpandMoreIcon size="large" />
+                        </div>
+                    </div>
+            }
+
+
         </div>
     )
 }
