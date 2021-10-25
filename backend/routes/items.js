@@ -52,15 +52,9 @@ router.route('/update/:id').post((req, res) => {
 
 router.route('/search/:word').get((req, res) => {
     var word = req.params.word.toLowerCase();
-<<<<<<< HEAD
     Item.find({title : {$regex: word}})
         .then(items => res.json(items))
         .catch(err => res.status(400).json('Error: ' + err));
-=======
-    Item.find({title : {$regex: req.params.word}})
-      .then(items => res.json(items))
-      .catch(err => res.status(400).json('Error: ' + err));
->>>>>>> 2d5c44a1de76af729880604e6dc7dd31a559cc88
 });
 
 module.exports = router;
