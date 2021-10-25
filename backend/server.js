@@ -26,7 +26,7 @@ connection.once('open', () => {
 
 // Sends a test GET request to return "Test"
 app.get('/', (req, res) => {
-  return res.send("Test")
+   return res.send("Test")
 })
 
 const itemsRouter = require('./routes/items');
