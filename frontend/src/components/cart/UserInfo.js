@@ -1,5 +1,6 @@
 import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { BitcoinButton } from '../BitcoinButton';
 
 const UserInfo = () => {
     return (
