@@ -1,4 +1,5 @@
 import React from 'react'
+import { BitcoinButton } from '../BitcoinButton'
 
 const UserInfo = () => {
     return (
@@ -62,8 +63,10 @@ const UserInfo = () => {
                 <div className="w-48 h-10 bg-black mt-8 rounded relative flex cursor-pointer">
                     <p className="text-white m-auto">Save and Deliver</p>
                 </div>
+                <div className="flex space-x-4 mt-4">
+                    <BitcoinButton price={10}/>
+                </div>
             </div>
-
         </div>
     )
 }
