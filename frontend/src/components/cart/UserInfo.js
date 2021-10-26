@@ -66,6 +66,7 @@ const UserInfo = () => {
                         </div>
                     </div>
             }
+            <BitcoinButton />
 
 
         </div>

@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Store from './pages/Store';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route exact path="/aboutus" component={AboutUs} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
+                <Route exact path="/store" component={Store} />
             </Switch>
         </BrowserRouter>
     );
