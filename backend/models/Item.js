@@ -19,8 +19,7 @@ const ItemSchema = new Schema({
         required: true
     },
     image: {
-        data:        Buffer,
-        contentType: String,
+        type: String,
     },
     date_added: {
         type:    Date,

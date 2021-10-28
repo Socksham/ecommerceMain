@@ -6,6 +6,8 @@ import Cart from './pages/Cart';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import ItemsShowcase from './pages/ItemsShowcase';
+import AddReview from './pages/AddReview';
 
 function App() {
     return (
@@ -17,6 +19,8 @@ function App() {
                 <Route exact path="/aboutus" component={AboutUs} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
+                <Route exact path="/q/:word" component={ItemsShowcase} />
+                <Route exact path="/r/:item/:user" component={AddReview}/>
             </Switch>
         </BrowserRouter>
     );
