@@ -3,9 +3,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { BitcoinButton } from '../BitcoinButton';
 
 const UserInfo = () => {
-    const [clicked, setClicked] = useState(true)
+    const [clicked, setClicked] = useState(false)
     return (
-        <div>
+        <div className="bg-white p-8 bg-opacity-70 rounded-xl">
             <div className="">
                 <div className="flex space-x-4">
                     <div>
@@ -52,7 +52,7 @@ const UserInfo = () => {
             </div>
             {
                 clicked ?
-                    <div className="w-full mt-8 bg-white p-2 rounded-md flex items-center pl-4 cursor-pointer pr-4" onClick={() => {setClicked(false)}}>
+                    <div className="w-full mt-8 bg-white p-2 rounded-md flex items-center pl-4 cursor-pointer pr-4 h-24" onClick={() => {setClicked(false)}}>
                         <div className="w-full">
                             <p>Payment method</p>
                             <BitcoinButton />
