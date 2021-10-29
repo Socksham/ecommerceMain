@@ -8,10 +8,11 @@ import StarRating from '../components/StarRating'
 const AddReview = ({history}) => {
 
     const location = useLocation();
-    const [itemId, setItemId] = useState("")  
-    const [userId, setUserId] = useState("")
-    const [userData, setUserData] = useState([])
-    const [reviewText, setReviewText] = useState("")
+    const [itemId, setItemId] = useState("");
+    const [userId, setUserId] = useState("");
+    const [userData, setUserData] = useState([]);
+    const [reviewText, setReviewText] = useState("");
+    const [rating, setRating] = useState(30);
     
     const getUser = (id) => {
         return axios.get(`http://localhost:5000/users/${id}`)
@@ -21,6 +22,10 @@ const AddReview = ({history}) => {
         return axios.get(`http://localhost:5000/items/${id}`)
     }
 
+    const getRating = (rating) => {
+        setRating(rating);
+    }
+
     function handleSubmit(e) {
         console.log(reviewText);
         e.preventDefault();
@@ -28,14 +33,14 @@ const AddReview = ({history}) => {
             "user": userId,
             "item": itemId,
             "text": reviewText,
-            "rating": "50",
+            "rating": rating.toString(),
             "score": "0"
         };
         console.log(body);
 
         axios.post('http://localhost:5000/reviews/add', body)
             .then(res => console.log(res));
-        // history.push(`/item/${itemId}`)
+        history.push(`/item/${itemId}`)
     }
 
     useEffect(() => {
@@ -51,7 +56,6 @@ const AddReview = ({history}) => {
           .catch((error) => {
             console.log(error);
           })
-        console.log(userData)
     }, [])
 
     return (
@@ -61,7 +65,7 @@ const AddReview = ({history}) => {
                 <div className="ml-20 pt-8 mr-20">
                     <div className="bg-white bg-opacity-60 p-10 rounded-xl">
                         <p>User: {userData.username}</p>
-                        <StarRating />
+                        <StarRating sendData={getRating}/>
                         <br></br>
                         <div className="w-full">
                             <form className="w-full" onSubmit={handleSubmit}>

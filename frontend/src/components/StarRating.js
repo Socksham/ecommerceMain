@@ -13,17 +13,18 @@ const StyledRating = styled(Rating)({
   },
 });
 
-export default function StarRating() {
+export default function StarRating(props) {
     return (
         <div>
-        <StyledRating
-            name="customized-color"
-            defaultValue={3}
-            max={3}
-            precision={0.5}
-            icon={<StarIcon fontSize="inherit" />}
-            emptyIcon={<StarBorderIcon fontSize="inherit" />}
-        />
+            <StyledRating
+                name="customized-color"
+                defaultValue={3}
+                max={3}
+                precision={0.5}
+                icon={<StarIcon fontSize="inherit" />}
+                emptyIcon={<StarBorderIcon fontSize="inherit" />}
+                onChange={(event, val) => {props.sendData(val*10)}}
+            />
         </div>
     );
 }
