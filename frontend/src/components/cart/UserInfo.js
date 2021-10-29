@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { BitcoinButton } from '../BitcoinButton';
+import StripeCard from '../payment/StripeCard';
 
 const UserInfo = () => {
     const [clicked, setClicked] = useState(false)
@@ -52,22 +53,24 @@ const UserInfo = () => {
             </div>
             {
                 clicked ?
-                    <div className="w-full mt-8 bg-white p-2 rounded-md flex items-center pl-4 cursor-pointer pr-4 h-24" onClick={() => {setClicked(false)}}>
+                    <div className="w-full mt-8 bg-white p-2 rounded-md flex items-center pl-4 cursor-pointer pr-4 h-24" onClick={(e) => {e.stopPropagation();
+                        setClicked(false)}}>
                         <div className="w-full">
                             <p>Payment method</p>
-                            <BitcoinButton />
+                            <StripeCard />
                         </div>
                     </div>
                     :
-                    <div className="w-full mt-8 bg-white h-12 rounded-md flex items-center pl-4 cursor-pointer pr-4" onClick={() => {setClicked(true)}}>
+                    <div className="w-full mt-8 bg-white h-12 rounded-md flex items-center pl-4 cursor-pointer pr-4" onClick={(e) => {
+                        e.stopPropagation();
+                        setClicked(true)}}>
                         <div className="flex justify-between w-full">
                             <p>Payment method</p>
                             <ExpandMoreIcon size="large" />
                         </div>
                     </div>
             }
-
-
+            <BitcoinButton />
         </div>
     )
 }

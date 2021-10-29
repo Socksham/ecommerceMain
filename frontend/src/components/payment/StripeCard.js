@@ -66,7 +66,7 @@ const StripeCard = ({email, user}) => {
         <div>
             <form>
                 <CardInput />
-                <button onClick={(e) => {handleSubmitSub(e)}}>Subscribe</button>
+                <button className="bg-black w-16 h-8 text-white rounded-md"onClick={(e) => {handleSubmitSub(e)}}>Pay</button>
             </form>
         </div>
     )
