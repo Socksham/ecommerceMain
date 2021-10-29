@@ -4,9 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+const publishableKey = "pk_test_51JpBn4AXNow734PUUVb1Me7NGDZOiBDlNf2v57LuEqlHX0xenNz9f5PaC1pNzsUDnEazEQwjdZgreeihubxDV7rI00pQXSLtKM"
+const stripePromise = loadStripe(publishableKey)
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Elements stripe={stripePromise}>
+      <App />
+    </Elements>
   </React.StrictMode>,
   document.getElementById('root')
 );
