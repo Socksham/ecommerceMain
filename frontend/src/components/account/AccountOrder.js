@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import AccountOrderItem from './AccountOrderItem'
+import StripeCard from '../payment/StripeCard'
 
 const AccountOrder = ({ status }) => {
+
+    const [email, setEmail] = useState("")
+
     return (
         <div>
             <div className="w-full h-px bg-gray-300 mt-4 mb-4"></div>
@@ -20,6 +24,7 @@ const AccountOrder = ({ status }) => {
                     <p>Shipping</p>
                 </div>
             </div>
+            {/* <StripeCard email={email}/> */}
         </div>
     )
 }
