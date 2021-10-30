@@ -9,6 +9,7 @@ import Signup from './pages/Signup';
 import ItemsShowcase from './pages/ItemsShowcase';
 import Navbar from './components/Navbar';
 import AddReview from './pages/AddReview';
+import ItemShowcase from './pages/ItemShowcase';
 
 function App() {
     return (
@@ -22,6 +23,8 @@ function App() {
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/q/:word" component={ItemsShowcase} />
                 <Route exact path="/r/:item/:user" component={AddReview}/>
+                <Route exact path="/item/:spud" component={ItemShowcase} />
+                <Route exact path="/aboutus" component={AboutUs} />
             </Switch>
         </BrowserRouter>
     );

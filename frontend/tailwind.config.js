@@ -4,6 +4,10 @@ module.exports = {
   theme: {
     
     extend: {
+      colors: {
+        "glass": "#F6FEFF"
+        // "glass": "#f5fcfc"
+      },
       filter: { // defaults to {}
         'none': 'none',
         'grayscale': 'grayscale(1)',
