@@ -32,10 +32,12 @@ app.get('/', (req, res) => {
 const itemsRouter = require('./routes/items');
 const reviewsRouter = require('./routes/reviews');
 const usersRouter = require('./routes/users');
+const stripeRouter = require('./routes/stripe');
 
 app.use('/items', itemsRouter);
 app.use('/reviews', reviewsRouter);
 app.use('/users', usersRouter);
+app.use('/stripe', stripeRouter);
 
 // Starts listening on port 5000 for new requests
 app.listen(process.env.PORT || 5000, () => console.log(`Listening on port ${process.env.PORT || 5000}!`));
