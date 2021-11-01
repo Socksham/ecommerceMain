@@ -1,4 +1,6 @@
-import React, {useEffect, useState } from 'react'
+import { Add } from '@mui/icons-material'
+import Star from '@mui/icons-material/Star'
+import React, { useEffect, useState } from 'react'
 import Review from '../components/item/Review'
 import Navbar from '../components/Navbar'
 import { auth } from '../config/Firebase'
@@ -9,6 +11,7 @@ import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorder from '@mui/icons-material/StarBorder';
 
 const ItemShowcase = ({history}) => {
+    const [loggedIn, setLoggedIn] = useState(false)
     const location = useLocation();
     const [itemInfo, setItemInfo] = useState([]);
     const [reviewInfo, setReviewInfo] = useState([]);
@@ -44,11 +47,11 @@ const ItemShowcase = ({history}) => {
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
-            if(user){
+            if (user) {
                 console.log("YESSS")
-            }else{
+                setLoggedIn(true)
+            } else {
                 console.log("NOOOOO")
-                history.push("/login")
             }
         })
 
@@ -73,8 +76,14 @@ const ItemShowcase = ({history}) => {
 
     return (
         <div className="w-screen h-full bg-glass min-h-screen">
-            <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full">
-                <Navbar history={history}/>
+            <div className="relative bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full">
+                <Navbar history={history} />
+
+                <div class="absolute bottom-5 right-5 h-16 w-16 bg-black text-white rounded-full flex cursor-pointer">
+                    <div className="m-auto">
+                        <Add fontSize="large"/>
+                    </div>
+                </div>
 
                 <div className="grid grid-cols-2 ml-20 mr-20 mt-8 gap-6 bg-white rounded-3xl bg-opacity-70 shadow-lg">
                     <div className="ml-10">
@@ -98,7 +107,15 @@ const ItemShowcase = ({history}) => {
                             <p>{itemInfo.description}</p>
                         </div>
                         <div className="flex flex-row-reverse mt-20">
-                            <div className="bg-black p-4 rounded-md cursor-pointer" onClick={() => { }}>
+                            <div className="bg-black p-4 rounded-md cursor-pointer" onClick={
+                                () => {
+                                    if (loggedIn) {
+
+                                    }else{
+                                        history.push("/login")
+                                    }
+                                }
+                                }>
                                 <p className="text-white text-md">Add to Cart</p>
                             </div>
                         </div>
