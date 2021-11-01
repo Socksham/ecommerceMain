@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar"
 
 function Home({ history }) {
     return (
-        <div className="bg-glass h-screen">
+        <div className="bg-glass h-screen min-h-screen">
             <Navbar history={history} />
             <div className="flex flex-row-reverse ml-20 mr-20">
                 <div className="w-1/2">

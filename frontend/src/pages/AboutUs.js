@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar"
 
 const AboutUs = ({history}) => {
     return (
-        <div className="h-screen bg-glass">
+        <div className="h-screen bg-glass min-h-screen">
             <Navbar history={history}/>
             <div className="mt-20 pb-10 flex items-center flex-col space-y-4 ml-72 mr-72 bg-white rounded-xl shadow-md p-8">
                 <p className="text-3xl">About us</p>
