@@ -21,6 +21,7 @@ const GridItem = ({ history, name, spud, price, rating, image }) => {
         }
         while(numStars < 3) {
             returnOutput.push(<StarBorder fontSize="medium"/>);
+            numStars++;
         }
         return returnOutput;
     }
