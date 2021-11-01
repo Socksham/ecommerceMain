@@ -2,22 +2,44 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from "../components/Navbar"
 import GridItem from '../components/items/GridItem'
+import axios from 'axios'
 import { auth } from '../config/Firebase'
 
 const ItemsShowcase = ({ history }) => {
     const location = useLocation();
     const [word, setWord] = useState("")
+    const [searchItems, setSearchItems] = useState([])
+
+    const getSearchResponse = (query) => {
+        return axios.get(`http://localhost:5000/items/search/${query}`)
+    }
+
+
+    function refreshSearchItems(items) {
+        let itemList = [];
+        items.forEach((item,index)=>{
+            itemList.push( <li key={index}>{item}</li>)
+        })
+        return itemList;
+    }
 
     useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if(user){
-                console.log("YESSS")
-                setWord(location.pathname.split("/")[2])
-            }else{
-                console.log("NOOOOO")
-                history.push("/login")
-            }
-        })
+        var inputs = location.pathname.split("/");
+        setWord(inputs[2])
+        getSearchResponse(inputs[2])
+            .then(response => {
+                if(response.data.length > 0) {
+                    setSearchItems(response.data[0])
+                    let items = [];
+                    response.data.forEach(element => {
+                        items.push(element._id)
+                    });
+                    refreshSearchItems(items);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }, [])
 
     useEffect(() => {

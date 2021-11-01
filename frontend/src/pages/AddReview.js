@@ -55,6 +55,10 @@ const AddReview = ({history}) => {
         history.push(`/item/${itemId}`)
     }
 
+    function refreshSearchItems() {
+        
+    }
+
     useEffect(() => {
         var inputs = location.pathname.split("/")
         setItemId(inputs[2])
