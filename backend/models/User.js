@@ -6,16 +6,15 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    uid: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: [true,'Please enter an email'],
         unique: true,
         lowercase: true
-    },
-    password: {
-        type: String,
-        required: [true, 'Please enter a valid password'],
-        minlength: [6, 'Minimum password length must be 6 characters']
     },
     items: [{
         productId: String,
@@ -28,10 +27,6 @@ const UserSchema = new Schema({
         },
         price: Number
     }],
-    image: {
-        data:        Buffer,
-        contentType: String
-    },
     register_date: {
         type: Date,
         default: Date.now

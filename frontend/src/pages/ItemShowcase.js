@@ -15,9 +15,23 @@ const ItemShowcase = ({history}) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const location = useLocation();
     const [rating, setRating] = useState([]);
+    const [uid, setUid] = useState("")
+    const [item, setItem] = useState("")
     
     const getItem = (query) => {
         return axios.get(`http://localhost:5000/items/${query}`)
+    }
+
+    const getUser = () => {
+        return axios.get(`http://localhost:5000/user/${uid}`)
+    }
+
+    const addToCart = () => {
+        const user = getUser()
+        console.log(user.data)
+        // return axios.post(`http://localhost:5000/user/update/${uid}`, {
+
+        // })
     }
 
     const show = function showStars(intRating) {
@@ -46,6 +60,7 @@ const ItemShowcase = ({history}) => {
             if (user) {
                 console.log("YESSS")
                 setLoggedIn(true)
+                setUid(user.uid)
             } else {
                 console.log("NOOOOO")
             }
@@ -53,6 +68,7 @@ const ItemShowcase = ({history}) => {
 
         var inputs = location.pathname.split("/");
         console.log(inputs[2])
+        setItem(inputs[2])
         getItem(inputs[2])
             .then(response => {
                 setRating(response.data.rating);
@@ -99,7 +115,7 @@ const ItemShowcase = ({history}) => {
                             <div className="bg-black p-4 rounded-md cursor-pointer" onClick={
                                 () => {
                                     if (loggedIn) {
-
+                                        addToCart()
                                     }else{
                                         history.push("/login")
                                     }

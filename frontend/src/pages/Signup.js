@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {auth} from "../config/Firebase"
+import axios from 'axios'
 
 const Signup = ({history}) => {
     const [email, setEmail] = useState("")
@@ -11,6 +12,18 @@ const Signup = ({history}) => {
 
         console.log(response.user.email)
         console.log(response.user.uid)
+
+        addUser(response.user.uid)
+    }
+
+    const addUser = (uid) => {
+        return axios.post("http://localhost:5000/users/add", {
+            username: "hello",
+            email: email,
+            password: password,
+            items: [],
+            uid: uid
+        })
     }
 
     useEffect(() => {
