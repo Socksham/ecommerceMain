@@ -57,7 +57,7 @@ const UserInfo = () => {
                         setClicked(false)}}>
                         <div className="w-full">
                             <p>Payment method</p>
-                            <StripeCard />
+                            {/* <StripeCard /> */}
                         </div>
                     </div>
                     :
