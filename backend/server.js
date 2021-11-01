@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // Defines app so that we can visit localhost:5000 and see the result of the get request
+
 app.use(function (rew, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
