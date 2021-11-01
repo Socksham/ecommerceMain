@@ -51,7 +51,9 @@ const Signup = () => {
                             </div>
 
                             <div>
-                                <button type="submit" className="mt-8 mb-4 border px-4 py-3 rounded-lg bg-arca-red w-full text-white bg-black" onClick={() => {registerHandler()}}>Signup</button>
+                                <button type="submit" className="mt-8 mb-4 border px-4 py-3 rounded-lg bg-arca-red w-full text-white bg-black" onClick={(e) => {
+                                    e.preventDefault()
+                                    registerHandler()}}>Signup</button>
                                 <p className="">Already have an account? <Link to="/login" className="text-arca-blue underline">Log in</Link></p>
                             </div>
 
