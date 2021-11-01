@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import Navbar from "../components/Navbar"
 import GridItem from '../components/items/GridItem'
 import axios from 'axios'
-import { auth } from '../config/Firebase'
 
 const ItemsShowcase = ({ history }) => {
     const location = useLocation();
@@ -42,10 +41,6 @@ const ItemsShowcase = ({ history }) => {
                 console.log(error);
             })
     }, [])
-
-    useEffect(() => {
-        
-    })
 
     return (
         <div className="w-screen h-full bg-glass min-h-screen ">

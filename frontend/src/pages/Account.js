@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar"
 import AccountDetails from "../components/account/AccountDetails"
 import AccountOrders from '../components/account/AccountOrders'
 import { auth } from '../config/Firebase'
+import axios from 'axios'
 
 const Account = ({history}) => {
 
@@ -10,6 +11,10 @@ const Account = ({history}) => {
     const [first, setFirst] = useState("")
     const [last, setLast] = useState("")
     const [email, setEmail] = useState("")
+
+    const getUser = (id) => {
+        return axios.get(`http://localhost:5000/users/${id}`)
+    }
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
