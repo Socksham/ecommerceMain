@@ -14,27 +14,27 @@ const ItemsShowcase = ({ history }) => {
         return axios.get(`http://localhost:5000/items/search/${query}`)
     }
 
-
-    function refreshSearchItems(items) {
-        let itemList = [];
-        items.forEach((item,index)=>{
-            itemList.push( <li key={index}>{item}</li>)
-        })
-        return itemList;
-    }
+    const searchItemsElements = searchItems.map((data, id) => {
+        return <GridItem history={history} 
+                         name={data.name} 
+                         spud={data.title}
+                         price={data.price}
+                         rating={data.rating}/>
+    });
 
     useEffect(() => {
         var inputs = location.pathname.split("/");
         setWord(inputs[2])
         getSearchResponse(inputs[2])
             .then(response => {
+                console.log(response);
                 if(response.data.length > 0) {
-                    setSearchItems(response.data[0])
                     let items = [];
                     response.data.forEach(element => {
-                        items.push(element._id)
+                        items.push(element)
                     });
-                    refreshSearchItems(items);
+                    console.log(items);
+                    setSearchItems(items);
                 }
             })
             .catch((error) => {
@@ -51,13 +51,7 @@ const ItemsShowcase = ({ history }) => {
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full pb-10">
                 <Navbar history={history} />
                 <div className="grid grid-cols-4 gap-8 ml-20 mr-20 pt-8">
-                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
-                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
-                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
-                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
-                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
-                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
-                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
+                    <>{searchItemsElements}</>
                 </div>
             </div>
         </div>
