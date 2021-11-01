@@ -4,12 +4,12 @@ import AccountOrder from './AccountOrder';
 import { auth } from '../../config/Firebase';
 
 
-const AccountDetails = ({history}) => {
+const AccountDetails = ({history, emailIn, firstIn, lastIn, addressIn}) => {
 
-    const [address, setAddress] = useState("865 Eaton Ct.")
-    const [first, setFirst] = useState("John")
-    const [last, setLast] = useState("Doe")
-    const [email, setEmail] = useState("johndoe@gmail.com")
+    const [address, setAddress] = useState(addressIn)
+    const [first, setFirst] = useState(firstIn)
+    const [last, setLast] = useState(lastIn)
+    const [email, setEmail] = useState(emailIn)
 
     return (
         <div className="flex w-full justify-between">
@@ -23,11 +23,11 @@ const AccountDetails = ({history}) => {
                                 </div>
                                 <div>
                                     <div className="flex text-xl space-x-2">
-                                        <p>John</p>
-                                        <p>Doe</p>
+                                        <p>{first}</p>
+                                        <p>{last}</p>
                                     </div>
                                     <div>
-                                        <p>johndoe@gmail.com</p>
+                                        <p>{email}</p>
                                     </div>
                                 </div>
 
