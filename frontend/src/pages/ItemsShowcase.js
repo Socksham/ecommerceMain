@@ -12,25 +12,17 @@ const ItemsShowcase = ({ history }) => {
     }, [])
 
     return (
-        <div style={{ backgroundImage: "url(\"https://image.freepik.com/free-vector/hand-drawn-minimal-background_23-2149017007.jpg" }} className="w-screen h-full bg-cover border-1 rounded-md bg-no-repeat">
+        <div className="w-screen h-full bg-blue-100">
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full pb-10">
                 <Navbar history={history} />
                 <div className="grid grid-cols-4 gap-8 ml-20 mr-20 pt-8">
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
-                        <GridItem />
+                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
+                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
+                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
+                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
+                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
+                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
+                        <GridItem history={history} name="Chinese Broccoli" spud="chinese-broccoli"/>
                 </div>
             </div>
         </div>
