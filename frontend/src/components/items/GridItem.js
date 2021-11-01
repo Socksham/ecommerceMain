@@ -10,8 +10,7 @@ const GridItem = ({ history, name, spud }) => {
                     <div className="w-56 mt-2 mb-2 rounded-md">
                         <img
                             className=""
-                            src="https://purepng.com/public/uploads/large/purepng.com-flourflourgrainscerealbread-1411527418592jo6pj.png
-                "
+                            src="https://purepng.com/public/uploads/large/purepng.com-flourflourgrainscerealbread-1411527418592jo6pj.png"
                         />
                     </div>
                 </div>
