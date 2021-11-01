@@ -1,9 +1,22 @@
 import Star from '@mui/icons-material/Star'
-import React from 'react'
+import React, {useEffect} from 'react'
 import Review from '../components/item/Review'
 import Navbar from '../components/Navbar'
+import { auth } from '../config/Firebase'
 
 const ItemShowcase = ({history}) => {
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if(user){
+                console.log("YESSS")
+            }else{
+                console.log("NOOOOO")
+                history.push("/login")
+            }
+        })
+    })
+
     return (
         <div className="w-screen h-full bg-glass">
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full">

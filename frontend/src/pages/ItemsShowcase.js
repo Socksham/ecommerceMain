@@ -2,14 +2,27 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from "../components/Navbar"
 import GridItem from '../components/items/GridItem'
+import { auth } from '../config/Firebase'
 
 const ItemsShowcase = ({ history }) => {
     const location = useLocation();
     const [word, setWord] = useState("")
 
     useEffect(() => {
-        setWord(location.pathname.split("/")[2])
+        auth.onAuthStateChanged((user) => {
+            if(user){
+                console.log("YESSS")
+                setWord(location.pathname.split("/")[2])
+            }else{
+                console.log("NOOOOO")
+                history.push("/login")
+            }
+        })
     }, [])
+
+    useEffect(() => {
+        
+    })
 
     return (
         <div className="w-screen h-full bg-blue-100">

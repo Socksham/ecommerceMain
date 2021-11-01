@@ -35,7 +35,9 @@ const Login = () => {
                             </div>
 
                             <div>
-                                <button type="submit" className="mt-8 mb-4 border px-4 py-3 rounded-lg bg-arca-red w-full text-white bg-black" onClick={() => {loginHandler()}}>Login</button>
+                                <button type="submit" className="mt-8 mb-4 border px-4 py-3 rounded-lg bg-arca-red w-full text-white bg-black" onClick={(e) => {
+                                    e.preventDefault()
+                                    loginHandler()}}>Login</button>
                                 <p className="">Don't have an account? <Link className="text-arca-blue underline" to="/signup">Signup</Link></p>
                             </div>
 

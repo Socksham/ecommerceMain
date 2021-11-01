@@ -1,9 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CartItems from '../components/cart/CartItems'
 import UserInfo from '../components/cart/UserInfo'
 import Navbar from "../components/Navbar"
+import { auth } from '../config/Firebase'
 
 const Cart = ({ history }) => {
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if(user){
+                console.log("YESSS")
+            }else{
+                console.log("NOOOOO")
+                history.push("/login")
+            }
+        })
+    })
 
     return (
         <div className="w-screen h-full bg-glass"> 

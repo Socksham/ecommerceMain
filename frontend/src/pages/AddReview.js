@@ -4,8 +4,20 @@ import Navbar from '../components/Navbar'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 import StarRating from '../components/StarRating'
+import { auth } from '../config/Firebase'
 
 const AddReview = ({history}) => {
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if(user){
+                console.log("YESSS")
+            }else{
+                console.log("NOOOOO")
+                history.push("/login")
+            }
+        })
+    })
 
     const location = useLocation();
     const [itemId, setItemId] = useState("");

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AccountOrder from './AccountOrder';
+import { auth } from '../../config/Firebase';
 
 
-const AccountDetails = () => {
+const AccountDetails = ({history}) => {
 
     const [address, setAddress] = useState("865 Eaton Ct.")
     const [first, setFirst] = useState("John")
@@ -32,7 +33,10 @@ const AccountDetails = () => {
 
                             </div>
                             <div>
-                                <div className="w-24 h-12 bg-black mt-8 rounded relative flex cursor-pointer">
+                                <div className="w-24 h-12 bg-black mt-8 rounded relative flex cursor-pointer" onClick={() => {
+                                    auth.signOut()
+                                    history.push('/')
+                                }}>
                                     <p className="m-auto text-white">Logout</p>
                                 </div>
                             </div>
@@ -49,12 +53,6 @@ const AccountDetails = () => {
                                     <input type="text" className="w-64 h-10 rounded bg-white pl-2 text-lg border-2 border-black" value={last} onChange={(e) => { setLast(e.target.value) }} />
                                 </div>
 
-                            </div>
-                            <div>
-                                <div>
-                                    <p>Email</p>
-                                    <input type="text" className="w-full h-10 rounded bg-white pl-2 text-lg border-2 border-black" value={email} onChange={(e) => { setEmail(e.target.value) }} />
-                                </div>
                             </div>
                             <div className="flex space-x-3">
                                 <div>
