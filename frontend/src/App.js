@@ -21,7 +21,7 @@ function App() {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path="/q/:word" component={ItemsShowcase} />
-                <Route exact path="/r/:item/:user" component={AddReview}/>
+                <Route exact path="/r/:item" component={AddReview}/>
                 <Route exact path="/item/:spud" component={ItemShowcase} />
                 <Route exact path="/aboutus" component={AboutUs} />
             </Switch>

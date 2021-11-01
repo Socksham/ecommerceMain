@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import Navbar from "../components/Navbar"
 import GridItem from '../components/items/GridItem'
 import axios from 'axios'
-import { auth } from '../config/Firebase'
 
 const ItemsShowcase = ({ history }) => {
     const location = useLocation();
@@ -15,11 +14,13 @@ const ItemsShowcase = ({ history }) => {
     }
 
     const searchItemsElements = searchItems.map((data, id) => {
+        console.log(data);
         return <GridItem history={history} 
                          name={data.name} 
-                         spud={data.title}
+                         spud={data._id}
                          price={data.price}
-                         rating={data.rating}/>
+                         rating={data.rating}
+                         image={data.image}/>
     });
 
     useEffect(() => {
@@ -51,7 +52,7 @@ const ItemsShowcase = ({ history }) => {
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full pb-10">
                 <Navbar history={history} />
                 <div className="grid grid-cols-4 gap-8 ml-20 mr-20 pt-8">
-                    <>{searchItemsElements}</>
+                    {searchItemsElements}
                 </div>
             </div>
         </div>
