@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AccountOrder from './AccountOrder';
 
-
 const AccountDetails = () => {
 
     const [address, setAddress] = useState("865 Eaton Ct.")
