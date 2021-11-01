@@ -27,7 +27,7 @@ var show = function showStars(intRating) {
 const GridItem = ({ history, name, spud, price, rating, image }) => {
 
     return (
-        <div className="bg-white w-full h-70 rounded-xl bg-opacity-80 pl-4 pr-4 p-4 cursor-pointer" onClick={() => { history.push("/item/" + spud) }}>
+        <div className="bg-white w-full h-70 rounded-xl bg-opacity-80 pl-4 pr-4 p-4 cursor-pointer shadow-lg" onClick={() => { history.push("/item/" + spud) }}>
             <div>
                 <div className="flex flex-col items-center">
                     <div className="w-56 mt-2 mb-2 rounded-md">

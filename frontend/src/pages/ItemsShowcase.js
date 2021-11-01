@@ -48,7 +48,7 @@ const ItemsShowcase = ({ history }) => {
     })
 
     return (
-        <div className="w-screen h-full bg-blue-100">
+        <div className="w-screen h-full bg-glass min-h-screen ">
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full pb-10">
                 <Navbar history={history} />
                 <div className="grid grid-cols-4 gap-8 ml-20 mr-20 pt-8">

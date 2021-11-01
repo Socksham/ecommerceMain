@@ -42,12 +42,8 @@ const Cart = ({ history }) => {
 
     }, []);
 
-    useEffect(() => {
-
-    })
-
     return (
-        <div className="w-screen h-full bg-glass">
+        <div className="w-screen h-full bg-glass min-h-screen">
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full">
                 <Navbar history={history} />
                 <div className="ml-20 pt-8 pb-8 mr-20 flex justify-between">
