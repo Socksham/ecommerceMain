@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { auth } from '../config/Firebase'
 
-const Login = () => {
+const Login = ({history}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -13,6 +13,17 @@ const Login = () => {
         console.log(response.user.email)
         console.log(response.user.uid)
     }
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if(user){
+                console.log("YESSS")
+                history.push("/")
+            }else{
+                console.log("NOOOOO")
+            }
+        })
+    })
 
     return (
         <div className="w-screen h-screen bg-glass">
