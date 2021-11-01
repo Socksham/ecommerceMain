@@ -14,9 +14,10 @@ const ItemsShowcase = ({ history }) => {
     }
 
     const searchItemsElements = searchItems.map((data, id) => {
+        console.log(data);
         return <GridItem history={history} 
                          name={data.name} 
-                         spud={data.title}
+                         spud={data._id}
                          price={data.price}
                          rating={data.rating}
                          image={data.image}/>
@@ -47,7 +48,7 @@ const ItemsShowcase = ({ history }) => {
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full pb-10">
                 <Navbar history={history} />
                 <div className="grid grid-cols-4 gap-8 ml-20 mr-20 pt-8">
-                    <>{searchItemsElements}</>
+                    {searchItemsElements}
                 </div>
             </div>
         </div>

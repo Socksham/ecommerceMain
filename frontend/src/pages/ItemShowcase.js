@@ -4,10 +4,42 @@ import React, { useEffect, useState } from 'react'
 import Review from '../components/item/Review'
 import Navbar from '../components/Navbar'
 import { auth } from '../config/Firebase'
+import axios from 'axios'
+import { useLocation } from 'react-router-dom'
+import StarIcon from '@mui/icons-material/Star';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import StarBorder from '@mui/icons-material/StarBorder';
 
-const ItemShowcase = ({ history }) => {
 
+const ItemShowcase = ({history}) => {
     const [loggedIn, setLoggedIn] = useState(false)
+    const location = useLocation();
+    const [rating, setRating] = useState([]);
+    
+    const getItem = (query) => {
+        return axios.get(`http://localhost:5000/items/${query}`)
+    }
+
+    const show = function showStars(intRating) {
+        var returnOutput = [];
+        var numStars = 0;
+        while (intRating > 0) {
+            if(intRating - 10 >= 0) {
+                returnOutput.push(<StarIcon fontSize="large" />);
+                intRating -= 10;
+                numStars++;
+            } else {
+                returnOutput.push(<StarHalfIcon fontSize="large"/>);
+                intRating -= 5;
+                numStars++;
+            }
+        }
+        while(numStars < 3) {
+            returnOutput.push(<StarBorder fontSize="large"/>);
+            numStars++;
+        }
+        return returnOutput;
+    }
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
@@ -18,6 +50,16 @@ const ItemShowcase = ({ history }) => {
                 console.log("NOOOOO")
             }
         })
+
+        var inputs = location.pathname.split("/");
+        console.log(inputs[2])
+        getItem(inputs[2])
+            .then(response => {
+                setRating(response.data.rating);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     })
 
     return (
@@ -43,9 +85,7 @@ const ItemShowcase = ({ history }) => {
                         <div className="flex justify-between ">
                             <p className="text-3xl">Chinese Broccoli</p>
                             <div className="flex">
-                                <Star fontSize="large" />
-                                <Star fontSize="large" />
-                                <Star fontSize="large" />
+                                {show(rating)}
                             </div>
 
                         </div>
