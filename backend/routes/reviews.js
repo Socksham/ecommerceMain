@@ -49,4 +49,10 @@ router.route('/update/:id').post((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/for/:itemid').get((req, res) => {
+  Review.find({item : req.params.itemid})
+      .then(reviews => res.json(reviews))
+      .catch(err => res.status(400).json('Error: ' + err));
+});
+
 module.exports = router;

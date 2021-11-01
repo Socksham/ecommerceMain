@@ -1,19 +1,46 @@
 import React from 'react'
 import { Avatar } from '@mui/material'
+import StarIcon from '@mui/icons-material/Star';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import StarBorder from '@mui/icons-material/StarBorder';
 
-const Review = () => {
+const Review = ({username, reviewText, rating}) => {
+    console.log(username);
+    const show = function showStars(intRating) {
+        var returnOutput = [];
+        var numStars = 0;
+        while (intRating > 0) {
+            if(intRating - 10 >= 0) {
+                returnOutput.push(<StarIcon fontSize="medium" />);
+                intRating -= 10;
+                numStars++;
+            } else {
+                returnOutput.push(<StarHalfIcon fontSize="medium"/>);
+                intRating -= 5;
+                numStars++;
+            }
+        }
+        while(numStars < 3) {
+            returnOutput.push(<StarBorder fontSize="medium"/>);
+            numStars++;
+        }
+        return returnOutput;
+    }
+
     return (
         <div className="ml-20 mr-20">
             <div className="flex items-center space-x-4">
-                <Avatar>S</Avatar>
+                <Avatar>{username.substring(0, 1)}</Avatar>
                 <div>
-                    <p className="text-xl">Stephanie B.</p>
+                    <p className="text-xl">{username}</p>
+                </div>
+                <div className="flex">
+                    {show(rating)}
                 </div>
             </div>
             <div className="ml-14">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum ut tellus sed eleifend. In ligula urna, congue egestas viverra condimentum, pellentesque nec nulla. Cras ut eros et odio tempus condimentum vel quis diam. Vivamus vel facilisis turpis. Etiam et nisi et dolor vulputate vehicula at ac nulla. Fusce et lacinia elit. Donec efficitur tempus magna, id tincidunt sem interdum vitae.</p>
+                <p>{reviewText}</p>
             </div>
-
         </div>
     )
 }
