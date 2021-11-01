@@ -1,14 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from "../components/Navbar"
 import AccountDetails from "../components/account/AccountDetails"
 import AccountOrders from '../components/account/AccountOrders'
 import { auth } from '../config/Firebase'
 
 const Account = ({history}) => {
+
+    const [address, setAddress] = useState("")
+    const [first, setFirst] = useState("")
+    const [last, setLast] = useState("")
+    const [email, setEmail] = useState("")
+
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if(user){
                 console.log("YESSS")
+                const uid = user.uid
+                setEmail(user.email)
+                //TODO: GET USER DATA FROM MONGO AND SET IT HERE **MAKE SURE TO USE UID VARIABLE
             }else{
                 console.log("NOOOOO")
                 history.push("/login")
@@ -30,7 +39,7 @@ const Account = ({history}) => {
             <div className="bg-clip-padding backdrop-blur-xl backdrop-filter bg-gray-100 bg-opacity-30 h-full">
                 <Navbar history={history} />
                 <div className="ml-20 pt-8 mr-20 flex justify-between pb-10">
-                    <AccountDetails history={history}/>
+                    <AccountDetails history={history} emailIn={email} firstIn={first} lastIn={last} addressIn={address}/>
                     <AccountOrders />
                 </div>
             </div>
