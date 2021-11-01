@@ -10,13 +10,14 @@ import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorder from '@mui/icons-material/StarBorder';
 
-
 const ItemShowcase = ({history}) => {
     const [loggedIn, setLoggedIn] = useState(false)
     const location = useLocation();
     const [rating, setRating] = useState([]);
     const [uid, setUid] = useState("")
     const [item, setItem] = useState("")
+    const [itemInfo, setItemInfo] = useState([]);
+    const [reviewInfo, setReviewInfo] = useState([]);
     
     const getItem = (query) => {
         return axios.get(`http://localhost:5000/items/${query}`)
@@ -32,6 +33,9 @@ const ItemShowcase = ({history}) => {
         // return axios.post(`http://localhost:5000/user/update/${uid}`, {
 
         // })
+    }
+    const getReviews = (query) => {
+        return axios.get(`http://localhost:5000/reviews/for/${query}`)
     }
 
     const show = function showStars(intRating) {
@@ -71,12 +75,20 @@ const ItemShowcase = ({history}) => {
         setItem(inputs[2])
         getItem(inputs[2])
             .then(response => {
-                setRating(response.data.rating);
+                setItemInfo(response.data);
             })
             .catch((error) => {
                 console.log(error)
             })
-    })
+
+        getReviews(inputs[2])
+            .then(response => {
+                setReviewInfo(response.data);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }, [])
 
     return (
         <div className="w-screen h-full bg-glass min-h-screen">
@@ -93,15 +105,14 @@ const ItemShowcase = ({history}) => {
                     <div className="ml-10">
                         <img
                             className="cursor-pointer"
-                            src="https://purepng.com/public/uploads/large/purepng.com-flourflourgrainscerealbread-1411527418592jo6pj.png
-                            "
+                            src={itemInfo.image}
                         />
                     </div>
                     <div className="ml-10 mr-10 mt-10">
                         <div className="flex justify-between ">
                             <p className="text-3xl">Chinese Broccoli</p>
                             <div className="flex">
-                                {show(rating)}
+                                {show(itemInfo.rating)}
                             </div>
 
                         </div>
@@ -109,7 +120,7 @@ const ItemShowcase = ({history}) => {
                             <p className="text-xl">$13.99</p>
                         </div>
                         <div className="mt-10">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum ut tellus sed eleifend. In ligula urna, congue egestas viverra condimentum, pellentesque nec nulla. Cras ut eros et odio tempus condimentum vel quis diam. Vivamus vel facilisis turpis. Etiam et nisi et dolor vulputate vehicula at ac nulla. Fusce et lacinia elit. Donec efficitur tempus magna, id tincidunt sem interdum vitae.</p>
+                            <p>{itemInfo.description}</p>
                         </div>
                         <div className="flex flex-row-reverse mt-20">
                             <div className="bg-black p-4 rounded-md cursor-pointer" onClick={
@@ -130,14 +141,18 @@ const ItemShowcase = ({history}) => {
                 <div>
                     <div className="flex flex-col items-center mt-10 pb-10">
                         <p className="text-3xl">Reviews</p>
-
                     </div>
                     <div className="space-y-6 pb-6">
-                        <Review />
-                        <Review />
-                        <Review />
-                        <Review />
-                        <Review />
+                    {
+                        reviewInfo.map((data,id)=>{
+                            console.log(data)
+                            return (
+                                <Review username={data.user}
+                                        reviewText={data.text}
+                                        rating={data.rating}/>
+                            );
+                        })
+                    }
                     </div>
                 </div>
 

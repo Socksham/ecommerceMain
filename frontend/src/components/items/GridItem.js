@@ -3,31 +3,31 @@ import StarIcon from '@mui/icons-material/Star';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import StarBorder from '@mui/icons-material/StarBorder';
 
-var show = function showStars(intRating) {
-    var returnOutput = [];
-    var numStars = 0;
-    while (intRating > 0) {
-        if(intRating - 10 >= 0) {
-            returnOutput.push(<StarIcon fontSize="medium" />);
-            intRating -= 10;
-            numStars++;
-        } else {
-            returnOutput.push(<StarHalfIcon fontSize="medium"/>);
-            intRating -= 5;
+const GridItem = ({ history, name, spud, price, rating, image }) => {
+    
+    const show = function showStars(intRating) {
+        var returnOutput = [];
+        var numStars = 0;
+        while (intRating > 0) {
+            if(intRating - 10 >= 0) {
+                returnOutput.push(<StarIcon fontSize="medium" />);
+                intRating -= 10;
+                numStars++;
+            } else {
+                returnOutput.push(<StarHalfIcon fontSize="medium"/>);
+                intRating -= 5;
+                numStars++;
+            }
+        }
+        while(numStars < 3) {
+            returnOutput.push(<StarBorder fontSize="medium"/>);
             numStars++;
         }
+        return returnOutput;
     }
-    while(numStars < 3) {
-        returnOutput.push(<StarBorder fontSize="medium"/>);
-        numStars++;
-    }
-    return returnOutput;
-}
-
-const GridItem = ({ history, name, spud, price, rating, image }) => {
 
     return (
-        <div className="bg-white w-full h-70 rounded-xl bg-opacity-80 pl-4 pr-4 p-4 cursor-pointer shadow-lg" onClick={() => { history.push("/item/" + spud) }}>
+        <div className="bg-white w-full h-70 rounded-xl bg-opacity-80 pl-4 pr-4 p-4 cursor-pointer" onClick={() => { history.push("/item/" + spud) }}>
             <div>
                 <div className="flex flex-col items-center">
                     <div className="w-56 mt-2 mb-2 rounded-md">

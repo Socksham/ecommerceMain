@@ -14,7 +14,6 @@ const ItemsShowcase = ({ history }) => {
     }
 
     const searchItemsElements = searchItems.map((data, id) => {
-        console.log(data);
         return <GridItem history={history} 
                          name={data.name} 
                          spud={data._id}
